@@ -34,7 +34,6 @@ class ProductController extends Controller
         }
 
         $products = Cache::get('products');
-
         return view('bizNews.products.index', compact('products'));
     }
 
