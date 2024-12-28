@@ -33,6 +33,7 @@ class ProductController extends Controller
             });
         }
 
+
         $products = Cache::get('products');
         return view('bizNews.products.index', compact('products'));
     }
@@ -58,6 +59,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
+
         return view('bizNews.products.create', compact('categories', 'tags'));
     }
 
@@ -75,7 +77,10 @@ class ProductController extends Controller
              */
             $product->tags()->attach($request->get('tags'));
 
-            cache()->delete('products');
+//            ProductCreatedEvent::dispatch($product, $request);
+
+
+//            cache()->delete('products');
 
             //dispatching or firing the event
 //            ProductCreatedEvent::dispatch($product, $request);
